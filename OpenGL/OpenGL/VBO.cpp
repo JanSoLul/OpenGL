@@ -34,7 +34,7 @@ int main(void) {
 	};
 
 	// VBO (Vertex Buffer Object) ID 생성
-	unsigned int buffer;
+	GLuint buffer;
 
 	// VBO 객체 생성
 	glGenBuffers(1, &buffer);
@@ -44,6 +44,12 @@ int main(void) {
 
 	// VBO에 위치 데이터 연결
 	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions, GL_STATIC_DRAW);
+
+	//정점 속성 정의
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
+
+	//정점 속성 활성화
+	glEnableVertexAttribArray(0);
 
 	// Loop until the user closes the window
 	while (!glfwWindowShouldClose(window))
